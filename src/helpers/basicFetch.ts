@@ -22,8 +22,8 @@ export const basicFetch = async <T>(
  const next = options?.next;
  const searchParams = params && stringifySearchParams(params);
 
- const host = API_URL + "/api";
- const baseUrl = `${host}${url}`;
+ const host = API_URL || "http://localhost";
+ const baseUrl = host + "/api" + url;
  const fetchUrl = searchParams ? baseUrl + "?" + searchParams : baseUrl;
 
  const response = await fetch(fetchUrl, {
