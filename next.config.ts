@@ -2,8 +2,8 @@
 
 // import type { NextConfig } from "next";
 
-const API_URL = process.env.API_URL as string;
-const [_, hostname] = API_URL.split("https://");
+const API_URL = process.env.API_URL;
+const hostname = API_URL?.split("https://")[1] || "localhost";
 
 const nextConfig = {
  images: {
@@ -15,9 +15,6 @@ const nextConfig = {
     pathname: "/**",
    },
   ],
-
-  // deviceSizes: [375, 650, 1100, 1500],
-  // imageSizes: [180],
  },
 };
 
