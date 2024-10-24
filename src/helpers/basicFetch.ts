@@ -23,6 +23,7 @@ export const basicFetch = async <T>(
  const searchParams = params && stringifySearchParams(params);
 
  const host = API_URL || "http://localhost";
+ // const baseUrl = `${host}${url}`;
  const baseUrl = host + "/api" + url;
  const fetchUrl = searchParams ? baseUrl + "?" + searchParams : baseUrl;
 
