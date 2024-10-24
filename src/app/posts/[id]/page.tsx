@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface IProps {
- params: { id: string };
+ params: Promise<{ id: string }>;
 }
 
 const PostPage: FC<IProps> = async ({ params }) => {
