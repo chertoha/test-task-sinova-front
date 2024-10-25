@@ -31,7 +31,7 @@ export default function RootLayout({
 
       <body className={`${opensans.variable} antialiased`}>
         <Header />
-        <section className="py-4 md:py-8">{children}</section>
+        <section className="py-4">{children}</section>
       </body>
     </html>
   );

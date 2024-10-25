@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Formik, FormikHelpers } from "formik";
 import { IoAddOutline } from "react-icons/io5";
 
@@ -10,37 +10,41 @@ import BannerField from "./BannerField";
 import { PostType } from "@/types/entities";
 import { createPostValidationSchema } from "@/utils/validationSchemas";
 import { createPostAction } from "@/actions/createPostAction";
+import FixedLoader from "../UIKit/FixedLoader";
 
 export type CreateFormValues = Omit<PostType, "_id">;
-
 const initialValues: CreateFormValues = {
-  title: "title-1",
-  shortDescription:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, atque, rem unde autem doloremque neque omnis alias porro deleniti velit incidunt natus corporis? Deserunt, itaque.",
+  title: "",
+  shortDescription: "",
   banner: "",
-  content: "atus corporis? Deser",
+  content: "",
 };
 
 const CreatePostForm = () => {
+  const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
 
-  const onSubmitHandler = async (
+  const onSubmitHandler = (
     values: CreateFormValues,
     { resetForm }: FormikHelpers<CreateFormValues>,
   ) => {
-    const response = await createPostAction(values);
+    startTransition(async () => {
+      const response = await createPostAction(values);
 
-    if (response.status === "error") {
-      alert(response.message);
-    }
+      if (response.status === "error") {
+        alert(response.message);
+      }
 
-    resetForm({ values: initialValues });
+      resetForm({ values: initialValues });
+    });
   };
 
   return (
     <>
+      <FixedLoader isLoading={isPending} />
+
       {!isOpen && (
         <button
           type="button"
@@ -48,7 +52,7 @@ const CreatePostForm = () => {
           className="border rounded-md text-white bg-green-600 hover:bg-green-500 transition-colors duration-300 ease-in-out"
           onClick={open}
         >
-          <IoAddOutline size={40} />
+          <IoAddOutline size={28} />
         </button>
       )}
 
@@ -79,7 +83,7 @@ const CreatePostForm = () => {
                   <button type="button" onClick={close} className="cancel">
                     Cancel
                   </button>
-                  <button type="submit" className="submit">
+                  <button type="submit" className="submit" disabled={isPending}>
                     Submit
                   </button>
                 </div>
