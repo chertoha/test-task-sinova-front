@@ -10,7 +10,7 @@ interface Iprops {
 
 const PostList: FC<Iprops> = ({ list }) => {
   return (
-    <ul className="post-list">
+    <ul className={list.length <= 4 ? "post-list-short" : "post-list"}>
       {list.map(post => (
         <li key={post._id}>
           <PostCard post={post} />

@@ -1,5 +1,9 @@
 .post-list {
-  @apply grid grid-cols-[repeat(auto-fit,minmax(230px,2fr))] gap-[20px];
+  @apply grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[20px];
+}
+
+.post-list-short {
+  @apply grid grid-cols-[repeat(auto-fit,minmax(230px,300px))] gap-[20px] justify-center;
 }
 
 .post-card-link {
