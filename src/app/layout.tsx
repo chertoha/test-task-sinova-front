@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 
-import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-// import localFont from "next/font/local";
+import type { Metadata } from "next";
+import Header from "@/components/Header";
 
 const opensans = Open_Sans({
   weight: ["400", "700"],
@@ -30,7 +30,8 @@ export default function RootLayout({
       </head>
 
       <body className={`${opensans.variable} antialiased`}>
-        <section className="py-10">{children}</section>
+        <Header />
+        <section className="py-4 md:py-8">{children}</section>
       </body>
     </html>
   );
