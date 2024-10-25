@@ -1,7 +1,4 @@
-import Link from "next/link";
-
 import Container from "../Container";
-import ROUTES from "@/config/routes";
 import Nav from "./Nav";
 
 const Header = () => {
