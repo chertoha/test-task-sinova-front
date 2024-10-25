@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-// import type { NextConfig } from "next";
-
 const API_URL = process.env.API_URL as string;
 const [_, domain] = API_URL.split("https://");
 

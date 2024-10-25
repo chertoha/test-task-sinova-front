@@ -1,9 +1,14 @@
-import { FC, useTransition } from "react";
-import { MdClose } from "react-icons/md";
-import { deletePostsBatchAction } from "@/actions/deletePostsBatchAction";
+"use client";
 
+import "./DeleteBatchButton.style.css";
+import { FC, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { MdClose } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
+
+import ROUTES from "@/config/routes";
 import FixedLoader from "../UIKit/FixedLoader";
+import { deletePostsBatchAction } from "@/actions/deletePostsBatchAction";
 
 interface IProps {
   isOpen: boolean;
@@ -14,23 +19,25 @@ interface IProps {
 
 const DeleteBatchButton: FC<IProps> = ({ isOpen, open, close, ids }) => {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const onConfirmHandler = () => {
     startTransition(async () => {
       const _response = await deletePostsBatchAction({ ids });
       close();
+      router.replace(ROUTES.ADMIN);
     });
   };
 
   return isOpen ? (
-    <div className="flex gap-6">
+    <div className="flex gap-5">
       <FixedLoader isLoading={isPending} />
 
       <button
         type="button"
         aria-label="Cancel"
         onClick={close}
-        className="hover:scale-125 transition-transform duration-300 ease-in-out"
+        className="delete-cancel"
         disabled={isPending}
       >
         <MdClose size={35} />
@@ -40,18 +47,14 @@ const DeleteBatchButton: FC<IProps> = ({ isOpen, open, close, ids }) => {
         type="button"
         aria-label="Confirm delete"
         onClick={onConfirmHandler}
-        className="hover:scale-125 transition-transform duration-300 ease-in-out"
+        className="delete-confirm"
         disabled={isPending}
       >
-        <FaTrashCan size={30} />
+        <FaTrashCan size={26} />
       </button>
     </div>
   ) : (
-    <button
-      type="button"
-      className="border rounded-md border-red-600 py-2 px-3 text-red-600 hover:bg-red-600 hover:text-white transition-colors duration-300 ease-in-out"
-      onClick={open}
-    >
+    <button type="button" className="delete-multiple" onClick={open}>
       Multiple delete
     </button>
   );

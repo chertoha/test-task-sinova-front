@@ -1,5 +1,6 @@
 "use client";
 
+import "./CreatePostForm.style.css";
 import { useState, useTransition } from "react";
 import { Formik, FormikHelpers } from "formik";
 import { IoAddOutline } from "react-icons/io5";
@@ -46,12 +47,7 @@ const CreatePostForm = () => {
       <FixedLoader isLoading={isPending} />
 
       {!isOpen && (
-        <button
-          type="button"
-          aria-label="Add post"
-          className="border rounded-md text-white bg-green-600 hover:bg-green-500 transition-colors duration-300 ease-in-out"
-          onClick={open}
-        >
+        <button type="button" aria-label="Add post" className="add-button" onClick={open}>
           <IoAddOutline size={28} />
         </button>
       )}
@@ -63,7 +59,7 @@ const CreatePostForm = () => {
           validationSchema={createPostValidationSchema}
         >
           {({ handleSubmit }) => (
-            <form onSubmit={handleSubmit} className="md:flex gap-10 max-w-[800px]">
+            <form onSubmit={handleSubmit} className="create-form">
               <div className="shrink-0">
                 <BannerField />
               </div>
@@ -83,6 +79,7 @@ const CreatePostForm = () => {
                   <button type="button" onClick={close} className="cancel">
                     Cancel
                   </button>
+
                   <button type="submit" className="submit" disabled={isPending}>
                     Submit
                   </button>

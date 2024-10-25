@@ -4,10 +4,10 @@ import { BsArrowLeft } from "react-icons/bs";
 
 import Post from "@/components/Post";
 import ROUTES from "@/config/routes";
+import Container from "@/components/Container";
 
 import { basicFetch } from "@/helpers/basicFetch";
 import { PostType } from "@/types/entities";
-import Container from "@/components/Container";
 
 interface IProps {
   params: Promise<{ id: string }>;

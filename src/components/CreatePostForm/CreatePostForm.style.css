@@ -1,0 +1,31 @@
+.banner-wrapper {
+  @apply h-[250px] w-[250px] relative;
+}
+
+.banner-preview {
+  @apply h-full w-full object-cover rounded-2xl;
+}
+
+.banner-clear {
+  @apply absolute -top-5 -right-5;
+}
+
+.clear-button {
+  @apply hover:scale-125 transition-transform duration-300 ease-in-out;
+}
+
+.banner-label {
+  @apply border h-full border-black text-gray-300 border-dashed flex items-center rounded-2xl justify-center cursor-pointer hover:border-green-600 hover:text-green-600 transition-colors duration-300 ease-in-out;
+}
+
+.banner-error {
+  @apply text-red-600 absolute top-full left-0;
+}
+
+.add-button {
+  @apply border rounded-md text-white bg-green-600 hover:bg-green-500 transition-colors duration-300 ease-in-out;
+}
+
+.create-form {
+  @apply md:flex gap-10 max-w-[800px];
+}

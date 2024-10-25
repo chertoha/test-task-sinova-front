@@ -2,11 +2,11 @@ import { FC, useTransition } from "react";
 import { Formik } from "formik";
 
 import Field from "../UIKit/Field";
+import FixedLoader from "../UIKit/FixedLoader";
 
 import { UpdateFormValues } from "./AdminEditField";
 import { updatePostAction } from "@/actions/updatePostAction";
 import { updatePostValidationSchema } from "@/utils/validationSchemas";
-import FixedLoader from "../UIKit/FixedLoader";
 
 interface IProps {
   initialValues: UpdateFormValues;
