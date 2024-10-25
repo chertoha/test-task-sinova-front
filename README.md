@@ -17,6 +17,7 @@ NEXT_PUBLIC_API_URL=your_public_api_url_here
 ```
 
 API_URL: Used for server-side requests within Next.js.
+
 NEXT_PUBLIC_API_URL: Used for client-side requests and exposed to the browser.
 
 ## Run the development server:
