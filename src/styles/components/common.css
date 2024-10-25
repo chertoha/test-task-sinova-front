@@ -1,3 +1,7 @@
 .container-default {
   @apply mx-auto px-5 md:px-8 xl:px-20;
 }
+
+.input {
+  @apply block w-full py-1 px-4 border border-gray-600 rounded-md;
+}

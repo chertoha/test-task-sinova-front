@@ -24,7 +24,7 @@ const AdminPage: FC<IProps> = async ({ searchParams }) => {
   return (
     <>
       <Container>
-        {/* <CreatePostForm /> */}
+        <CreatePostForm />
 
         {response?.data && (
           <>

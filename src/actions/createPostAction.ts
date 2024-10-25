@@ -1,36 +1,26 @@
 "use server";
 
+import { CreateFormValues } from "@/components/CreatePostForm/CreatePostForm";
 import { basicFetch } from "@/helpers/basicFetch";
 import { ResponseError } from "@/helpers/responseErrors";
 import { revalidateTag } from "next/cache";
 
-export type UpdatePostActionresponse = {
+export type CreatePostAction = {
   status: "success" | "error";
   message: string;
 };
 
-export const updatePostAction = async (
-  id: string,
-  formData: FormData,
-): Promise<UpdatePostActionresponse> => {
-  let body = {};
-
-  for (let entry of formData.entries()) {
-    body = JSON.stringify({
-      [entry[0]]: entry[1],
-    });
-  }
-
+export const createPostAction = async (data: CreateFormValues): Promise<CreatePostAction> => {
   try {
-    await basicFetch(`/posts/${id}`, {
-      method: "PATCH",
-      body,
+    await basicFetch("/posts", {
+      method: "POST",
+      body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     });
 
     revalidateTag("posts");
 
-    return { status: "success", message: "Post successfully updated" };
+    return { status: "success", message: "Post successfully created" };
   } catch (error) {
     let message = "Something went wrong";
 
@@ -41,7 +31,6 @@ export const updatePostAction = async (
         message = error.message;
       }
     }
-
     return { status: "error", message };
   }
 };

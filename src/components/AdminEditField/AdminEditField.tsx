@@ -24,8 +24,11 @@ const AdminEditField: FC<IProps> = ({ value, fieldName, id }) => {
     data.append(fieldName, values[fieldName].trim());
     const response = await updatePostAction(id, data);
 
+    if (response.status === "error") {
+      alert(response.message);
+    }
+
     setIsEditMode(false);
-    console.log(response);
   };
 
   const initialValues: UpdateFormValues = { [fieldName]: value };

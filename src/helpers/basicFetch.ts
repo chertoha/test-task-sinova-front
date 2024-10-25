@@ -37,7 +37,7 @@ export const basicFetch = async <T>(
     let message = "Failed to fetch data";
     const errorResponse = await response.json();
     message = `CHE LOG -> ${errorResponse?.message} / status ${response.status}` || message;
-    throw new ResponseError(message, errorResponse);
+    throw new ResponseError(message, errorResponse, response.status);
   }
 
   const contentType = response.headers.get("content-type");
