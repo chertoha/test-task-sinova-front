@@ -71,7 +71,7 @@ const AdminPostList: FC<IProps> = ({ list }) => {
                   <div className="space-y-4 grow">
                     <AdminEditField value={title} fieldName="title" id={id} />
                     <AdminEditField value={shortDescription} fieldName="shortDescription" id={id} />
-                    <AdminEditField value={content || ""} fieldName="content" id={id} />
+                    <AdminEditField value={content || ""} fieldName="content" id={id} huge />
                   </div>
 
                   <div className="">

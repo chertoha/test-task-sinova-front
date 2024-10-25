@@ -40,8 +40,8 @@ const EditBannerButton: FC<IProps> = ({ id }) => {
 
   return (
     <>
-      <label aria-label="Edit banner" className="cursor-pointer">
-        <MdOutlineEdit />
+      <label aria-label="Edit banner" className="edit-pencil cursor-pointer  ">
+        <MdOutlineEdit size={18} />
         <input
           type="file"
           hidden

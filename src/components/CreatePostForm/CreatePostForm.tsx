@@ -77,17 +77,10 @@ const CreatePostForm = () => {
                 </div>
 
                 <div className="mt-8 flex gap-4">
-                  <button
-                    type="button"
-                    onClick={close}
-                    className="border border-red-600 px-4 py-1 rounded-md text-red-600  hover:bg-red-500 hover:text-white transition-colors duration-300 ease-in-out"
-                  >
+                  <button type="button" onClick={close} className="cancel">
                     Cancel
                   </button>
-                  <button
-                    type="submit"
-                    className="border bg-green-600 px-4 py-1 rounded-md text-white hover:bg-green-500 transition-colors duration-300 ease-in-out"
-                  >
+                  <button type="submit" className="submit">
                     Submit
                   </button>
                 </div>
