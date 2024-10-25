@@ -19,6 +19,7 @@ const Home: FC<IProps> = async ({ searchParams }) => {
 
   const response = await basicFetch<Pageable<PostType>>("/posts", {
     params: { page, limit: API_REQUEST_DEFAULT_LIMIT },
+    next: { tags: ["posts"] },
   });
   console.log(response);
 

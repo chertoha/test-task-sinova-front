@@ -3,19 +3,32 @@
 // import type { NextConfig } from "next";
 
 const API_URL = process.env.API_URL as string;
-const [_, hostname] = API_URL.split("https://");
+const [_, domain] = API_URL.split("https://");
 
 const nextConfig = {
- images: {
-  remotePatterns: [
-   {
-    protocol: "https",
-    hostname,
-    port: "",
-    pathname: "/**",
-   },
-  ],
- },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "20mb",
+    },
+  },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: domain || "",
+        port: "",
+        pathname: "/**",
+      },
+
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "9090",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

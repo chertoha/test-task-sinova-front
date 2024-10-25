@@ -1,3 +1,4 @@
+import { imageAllowedMIMETypes } from "@/config/images";
 import { IoAddOutline } from "react-icons/io5";
 
 const CreatePostForm = () => {
@@ -22,7 +23,7 @@ const CreatePostForm = () => {
 
         <label className="h-[200px] w-[200px] border border-black flex items-center justify-center rounded-2xl cursor-pointer hover:border-green-600 hover:text-green-600 transition-colors duration-300 ease-in-out">
           <IoAddOutline size={60} />
-          <input type="file" hidden accept={["image/png", "image/jpeg"].join(",")} />
+          <input type="file" hidden accept={imageAllowedMIMETypes.join(",")} />
         </label>
 
         <textarea name="content" placeholder="Content" className="block"></textarea>

@@ -8,6 +8,7 @@ import { Pageable } from "@/types/responses";
 const AdminPage = async () => {
   const response = await basicFetch<Pageable<PostType>>("/posts", {
     params: { page: 1, limit: 100 },
+    next: { tags: ["posts"] },
   });
 
   return (
