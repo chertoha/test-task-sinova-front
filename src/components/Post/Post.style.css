@@ -1,0 +1,11 @@
+.post-heading {
+  @apply text-4xl font-bold mb-6;
+}
+
+.post-image-wrapper {
+  @apply min-h-[400px] max-w-[700px] overflow-hidden relative rounded-2xl mb-6;
+}
+
+.post-image {
+  @apply h-full w-full object-cover;
+}

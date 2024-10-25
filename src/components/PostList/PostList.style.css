@@ -1,0 +1,35 @@
+.post-list {
+  @apply grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[20px];
+}
+
+.post-list-short {
+  @apply grid grid-cols-[repeat(auto-fit,minmax(230px,300px))] gap-[20px] justify-center;
+}
+
+.post-card-link {
+  @apply block hover:scale-105 transition-transform ease-in-out duration-300;
+}
+
+.post-card-article {
+  @apply p-3 rounded-xl border flex flex-col h-[430px] shadow-md bg-white;
+}
+
+.post-card-image-wrapper {
+  @apply h-[250px] overflow-hidden relative rounded-md;
+}
+
+.post-card-image {
+  @apply h-full w-full object-cover;
+}
+
+.post-card-meta {
+  @apply flex flex-col flex-grow justify-between;
+}
+
+.post-card-title {
+  @apply mt-3 font-bold;
+}
+
+.post-card-description {
+  @apply mt-4;
+}
