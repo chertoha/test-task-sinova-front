@@ -21,7 +21,6 @@ const Home: FC<IProps> = async ({ searchParams }) => {
     params: { page, limit: API_REQUEST_DEFAULT_LIMIT },
     next: { tags: ["posts"] },
   });
-  console.log(response);
 
   return (
     <>
