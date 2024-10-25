@@ -1,13 +1,15 @@
+import { FC } from "react";
+
+import ROUTES from "@/config/routes";
 import AdminPostList from "@/components/AdminPostList";
 import Container from "@/components/Container";
 import CreatePostForm from "@/components/CreatePostForm";
 import Paginator from "@/components/UIKit/Paginator";
+
 import { ADMIN_API_REQUEST_DEFAULT_LIMIT, ADMIN_API_REQUEST_DEFAULT_PAGE } from "@/config/api";
-import ROUTES from "@/config/routes";
 import { basicFetch } from "@/helpers/basicFetch";
 import { PostType } from "@/types/entities";
 import { Pageable } from "@/types/responses";
-import { FC } from "react";
 
 interface IProps {
   searchParams: Promise<{ page: string | undefined }>;

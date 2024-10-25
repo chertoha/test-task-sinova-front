@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, useTransition } from "react";
 import { Formik } from "formik";
 
 import Field from "../UIKit/Field";
+import FixedLoader from "../UIKit/FixedLoader";
 
 import { UpdateFormValues } from "./AdminEditField";
 import { updatePostAction } from "@/actions/updatePostAction";
@@ -16,42 +17,50 @@ interface IProps {
 }
 
 const EditForm: FC<IProps> = ({ initialValues, fieldName, id, close, huge }) => {
-  const onSubmitHandler = async (values: { [fieldName: string]: string }) => {
-    const data = new FormData();
-    data.append(fieldName, values[fieldName].trim());
-    const response = await updatePostAction(id, data);
+  const [isPending, startTransition] = useTransition();
 
-    if (response.status === "error") {
-      alert(response.message);
-    }
+  const onSubmitHandler = (values: { [fieldName: string]: string }) => {
+    startTransition(async () => {
+      const data = new FormData();
+      data.append(fieldName, values[fieldName].trim());
+      const response = await updatePostAction(id, data);
 
-    close();
+      if (response.status === "error") {
+        alert(response.message);
+      }
+
+      close();
+    });
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmitHandler}
-      validationSchema={updatePostValidationSchema}
-      validateOnChange
-    >
-      {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          <div className="">
-            <Field name={fieldName} huge={huge} />
-          </div>
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmitHandler}
+        validationSchema={updatePostValidationSchema}
+        validateOnChange
+      >
+        {({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <div className="">
+              <Field name={fieldName} huge={huge} />
+            </div>
 
-          <div className="mt-8 flex gap-4">
-            <button type="button" onClick={close} className="cancel">
-              Cancel
-            </button>
-            <button type="submit" className="submit">
-              Submit
-            </button>
-          </div>
-        </form>
-      )}
-    </Formik>
+            <div className="mt-8 flex gap-4">
+              <button type="button" onClick={close} className="cancel" disabled={isPending}>
+                Cancel
+              </button>
+              <button type="submit" className="submit" disabled={isPending}>
+                Submit
+              </button>
+            </div>
+          </form>
+        )}
+      </Formik>
+
+      <FixedLoader isLoading={isPending} />
+    </>
   );
 };
 

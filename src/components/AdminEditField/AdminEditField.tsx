@@ -17,7 +17,6 @@ export type UpdateFormValues = Partial<Omit<PostType, "_id">>;
 
 const AdminEditField: FC<IProps> = ({ value, fieldName, id, huge }) => {
   const [isEditMode, setIsEditMode] = useState<boolean>();
-
   const closeEditMode = () => setIsEditMode(false);
 
   const initialValues: UpdateFormValues = { [fieldName]: value };

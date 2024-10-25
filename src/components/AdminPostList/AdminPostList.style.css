@@ -1,0 +1,31 @@
+.list {
+  @apply space-y-6 max-w-[900px];
+}
+
+.item {
+  @apply border-b border-gray-300 py-5 first:pt-0 last:border-none last:pb-0;
+}
+
+.card {
+  @apply md:flex gap-10 relative;
+}
+
+.card-input {
+  @apply w-6 h-6 shrink-0 accent-red-700;
+}
+
+.card-image-wrapper {
+  @apply h-[150px] w-[150px] relative shrink-0;
+}
+
+.card-image {
+  @apply h-full w-full object-cover rounded-xl;
+}
+
+.card-edit {
+  @apply absolute -top-4 -right-4;
+}
+
+.card-fields {
+  @apply space-y-4 grow max-md:mt-4;
+}
