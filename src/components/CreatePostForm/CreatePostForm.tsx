@@ -1,16 +1,15 @@
 "use client";
 
-import { uploadImageAction } from "@/actions/uploadImageAction";
-import { MAX_IMAGE_FILE_SIZE, imageAllowedMIMETypes } from "@/config/images";
+import { useState } from "react";
+import { Formik, FormikHelpers } from "formik";
+import { IoAddOutline } from "react-icons/io5";
+
+import Field from "../UIKit/Field";
+import BannerField from "./BannerField";
+
 import { PostType } from "@/types/entities";
 import { createPostValidationSchema } from "@/utils/validationSchemas";
-import { Formik, FormikHelpers } from "formik";
-import { ChangeEvent, useState } from "react";
-import { IoAddOutline } from "react-icons/io5";
-import BannerField from "./BannerField";
 import { createPostAction } from "@/actions/createPostAction";
-import { setValuesToFormData } from "@/utils/setValuesToFormData";
-import Field from "../UIKit/Field";
 
 export type CreateFormValues = Omit<PostType, "_id">;
 
@@ -59,7 +58,7 @@ const CreatePostForm = () => {
           onSubmit={onSubmitHandler}
           validationSchema={createPostValidationSchema}
         >
-          {({ handleSubmit, getFieldProps, errors }) => (
+          {({ handleSubmit }) => (
             <form onSubmit={handleSubmit} className="md:flex gap-10 max-w-[800px]">
               <div className="shrink-0">
                 <BannerField />

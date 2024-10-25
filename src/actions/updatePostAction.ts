@@ -15,7 +15,7 @@ export const updatePostAction = async (
 ): Promise<UpdatePostActionresponse> => {
   let body = {};
 
-  for (let entry of formData.entries()) {
+  for (const entry of formData.entries()) {
     body = JSON.stringify({
       [entry[0]]: entry[1],
     });

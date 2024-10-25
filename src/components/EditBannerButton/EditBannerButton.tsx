@@ -35,7 +35,7 @@ const EditBannerButton: FC<IProps> = ({ id }) => {
 
     const fieldFormData = new FormData();
     fieldFormData.append("banner", uploadResponse.src);
-    const updateResponse = await updatePostAction(id, fieldFormData);
+    const _updateResponse = await updatePostAction(id, fieldFormData);
   };
 
   return (

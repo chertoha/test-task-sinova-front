@@ -1,12 +1,13 @@
-import { MAX_IMAGE_FILE_SIZE, imageAllowedMIMETypes } from "@/config/images";
-import { useField, useFormikContext } from "formik";
-import { IoAddOutline } from "react-icons/io5";
-import { CreateFormValues } from "./CreatePostForm";
-import { uploadImageAction } from "@/actions/uploadImageAction";
 import { ChangeEvent } from "react";
-import Image from "next/image";
-import { createClientImageApiUrl } from "@/config/url";
+import { useField } from "formik";
+import { IoAddOutline } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
+
+import Image from "next/image";
+
+import { MAX_IMAGE_FILE_SIZE, imageAllowedMIMETypes } from "@/config/images";
+import { uploadImageAction } from "@/actions/uploadImageAction";
+import { createClientImageApiUrl } from "@/config/url";
 
 const BannerField = () => {
   const [{ value: imageName }, { error }, { setValue, setError }] = useField<string>("banner");

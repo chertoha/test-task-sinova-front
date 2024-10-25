@@ -13,7 +13,7 @@ interface IProps {
 
 const DeleteBatchButton: FC<IProps> = ({ isOpen, open, close, ids }) => {
   const onConfirmHandler = async () => {
-    const response = await deletePostsBatchAction({ ids });
+    const _response = await deletePostsBatchAction({ ids });
     close();
   };
 
